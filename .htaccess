@@ -1,0 +1,44 @@
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+
+# add a trailing slash to /wp-admin
+RewriteRule ^([_0-9a-zA-Z-]+/)?wp-admin$ $1wp-admin/ [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-(content|admin|includes).*) $2 [L]
+RewriteRule ^([_0-9a-zA-Z-]+/)?(.*\.php)$ $2 [L]
+RewriteRule . index.php [L]
+
+RewriteCond %{HTTP_REFERER} !^http://nomecom1.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://nomecom1.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://e-bogu.pt/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://e-bogu.pt$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://nomecom1.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://nomecom1.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://web.orquestraclassicadocentro.org/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://web.orquestraclassicadocentro.org$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.e-bogu.pt/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.e-bogu.pt$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.nomecom1.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.nomecom1.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://nomecom1.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://nomecom1.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://e-bogu.pt/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://e-bogu.pt$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://nomecom1.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://nomecom1.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://web.orquestraclassicadocentro.org/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://web.orquestraclassicadocentro.org$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.e-bogu.pt/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.e-bogu.pt$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.nomecom1.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.nomecom1.com$      [NC]
+RewriteRule .*\.(jpg|jpeg|gif|png|bmp)$ - [F,NC]
+
+RewriteCond %{HTTP_HOST} ^e\-bogu\.pt$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.e\-bogu\.pt$
+RewriteRule ^/?$ "https\:\/\/www\.e\-bogu\.pt" [R=301,L]
+
